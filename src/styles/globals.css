@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-image: radial-gradient(
+    circle farthest-side at 50% 100%,
+    rgba(1, 9, 18, 0),
+    rgba(1, 6, 14, 0.6) 36%,
+    rgba(1, 14, 29, 0.6) 55%,
+    rgba(49, 18, 93, 0.4)
+  );
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Wallet button hover style */
+.wallet-adapter-button:not([disabled]):hover {
+  background-color: #707070;
+}
+
+/* Responsive Grid Layout */
+.nft-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Default for very small screens */
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 480px) {
+  /* Small phones and up */
+  .nft-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  /* Tablets and up */
+  .nft-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Small desktops and up */
+  .nft-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  /* Large screens */
+  .nft-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* NFT Card Styles */
+.nft-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nft-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.nft-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.nft-card p {
+  margin: 8px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.nft-card a {
+  display: block;
+  margin: 8px 0;
+  color: #0070f3;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.nft-card a:hover {
+  text-decoration: underline;
+}
+
+.nft-card button {
+  margin-top: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.nft-card button:hover {
+  background-color: #005bb5;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

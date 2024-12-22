@@ -1,0 +1,820 @@
+{
+  "Background": [
+    {
+      "url": "/assets-v2/Background/Lava.png",
+      "weight": 100,
+      "name": "Lava"
+    },
+    {
+      "url": "/assets-v2/Background/Desert.png",
+      "weight": 100,
+      "name": "Desert"
+    },
+    {
+      "url": "/assets-v2/Background/Karl_s Basement.png",
+      "weight": 10,
+      "name": "Karl's Basement"
+    },
+    {
+      "url": "/assets-v2/Background/Hostage Situation.png",
+      "weight": 10,
+      "name": "Hostage Situation"
+    },
+    {
+      "url": "/assets-v2/Background/Code.png",
+      "weight": 10,
+      "name": "Code"
+    },
+    {
+      "url": "/assets-v2/Background/Trenches.png",
+      "weight": 50,
+      "name": "Trenches"
+    },
+    {
+      "url": "/assets-v2/Background/Space.png",
+      "weight": 50,
+      "name": "Space"
+    },
+    {
+      "url": "/assets-v2/Background/Greenland.png",
+      "weight": 50,
+      "name": "Greenland"
+    },
+    {
+      "url": "/assets-v2/Background/City.png",
+      "weight": 100,
+      "name": "City"
+    },
+    {
+      "url": "/assets-v2/Background/Vaporwave.png",
+      "weight": 100,
+      "name": "Vaporwave"
+    },
+    {
+      "url": "/assets-v2/Background/Titanic.png",
+      "weight": 50,
+      "name": "Titanic"
+    },
+    {
+      "url": "/assets-v2/Background/Australia.png",
+      "weight": 100,
+      "name": "Australia"
+    },
+    {
+      "url": "/assets-v2/Background/More Accurate Australia.png",
+      "weight": 50,
+      "name": "More Accurate Australia"
+    },
+    {
+      "url": "/assets-v2/Background/Shore.png",
+      "weight": 100,
+      "name": "Shore"
+    },
+    {
+      "url": "/assets-v2/Background/Savannah.png",
+      "weight": 100,
+      "name": "Savannah"
+    },
+    {
+      "url": "/assets-v2/Background/Hillside.png",
+      "weight": 100,
+      "name": "Hillside"
+    },
+    {
+      "url": "/assets-v2/Background/Dr Fail House.png",
+      "weight": 10,
+      "name": "Dr Fail House"
+    },
+    {
+      "url": "/assets-v2/Background/Moon.png",
+      "weight": 50,
+      "name": "Moon"
+    },
+    {
+      "url": "/assets-v2/Background/Beach.png",
+      "weight": 100,
+      "name": "Beach"
+    },
+    {
+      "url": "/assets-v2/Background/Foliage.png",
+      "weight": 100,
+      "name": "Foliage"
+    },
+    {
+      "url": "/assets-v2/Background/Lake.png",
+      "weight": 100,
+      "name": "Lake"
+    },
+    {
+      "url": "/assets-v2/Background/Underwater.png",
+      "weight": 50,
+      "name": "Underwater"
+    },
+    {
+      "url": "/assets-v2/Background/Seanisms.png",
+      "weight": 50,
+      "name": "Seanisms"
+    },
+    {
+      "url": "/assets-v2/Background/Blood Splatter.png",
+      "weight": 50,
+      "name": "Blood Splatter"
+    }
+  ],
+  "Face": [
+    {
+      "url": "/assets-v2/Face/Camo Face Paint.png",
+      "weight": 100,
+      "name": "Camo Face Paint"
+    },
+    {
+      "url": "/assets-v2/Face/Karl Beard.png",
+      "weight": 50,
+      "name": "Karl Beard"
+    },
+    {
+      "url": "/assets-v2/Face/Superkiller Mask.png",
+      "weight": 10,
+      "name": "Superkiller Mask"
+    },
+    {
+      "url": "/assets-v2/Face/Aladdin Sane.png",
+      "weight": 100,
+      "name": "Aladdin Sane"
+    },
+    {
+      "url": "/assets-v2/Face/Vito Beard.png",
+      "weight": 50,
+      "name": "Vito Beard"
+    },
+    {
+      "url": "/assets-v2/Face/Rekieta Nose.png",
+      "weight": 50,
+      "name": "Rekieta Nose"
+    },
+    {
+      "url": "/assets-v2/Face/Joker.png",
+      "weight": 50,
+      "name": "Joker"
+    },
+    {
+      "url": "/assets-v2/Face/OG Dick Mustache.png",
+      "weight": 100,
+      "name": "OG Dick Mustache"
+    },
+    {
+      "url": "/assets-v2/Face/Injuries.png",
+      "weight": 50,
+      "name": "Injuries"
+    },
+    {
+      "url": "/assets-v2/Face/E-Girl Lewk.png",
+      "weight": 50,
+      "name": "E-Girl Lewk"
+    },
+    {
+      "url": "/assets-v2/Face/Dick Facial Hair.png",
+      "weight": 50,
+      "name": "Dick Facial Hair"
+    },
+    {
+      "url": "/assets-v2/Face/Civil War Beard.png",
+      "weight": 10,
+      "name": "Civil War Beard"
+    },
+    {
+      "url": "/assets-v2/Face/Johnny Beard.png",
+      "weight": 10,
+      "name": "Johnny Beard"
+    },
+    {
+      "url": null,
+      "weight": 2000,
+      "name": "None"
+    }
+  ],
+  "Body": [
+    {
+      "url": "/assets-v2/Body/Metal.png",
+      "weight": 1,
+      "name": "Metal"
+    },
+    {
+      "url": "/assets-v2/Body/Wood.png",
+      "weight": 1,
+      "name": "Wood"
+    },
+    {
+      "url": "/assets-v2/Body/Stone.png",
+      "weight": 1,
+      "name": "Stone"
+    },
+    {
+      "url": "/assets-v2/Body/Ice.png",
+      "weight": 1,
+      "name": "Ice"
+    },
+    {
+      "url": "/assets-v2/Body/Base.png",
+      "weight": 100,
+      "name": "Base"
+    },
+    {
+      "url": "/assets-v2/Body/Gold.png",
+      "weight": 1,
+      "name": "Gold"
+    }
+  ],
+  "Background Props": [
+    {
+      "url": "/assets-v2/Background Props/Snek Flag.png",
+      "weight": 100,
+      "name": "Snek Flag"
+    },
+    {
+      "url": "/assets-v2/Background Props/Diet Coke.png",
+      "weight": 100,
+      "name": "Diet Coke"
+    },
+    {
+      "url": "/assets-v2/Background Props/Slime Bed.png",
+      "weight": 100,
+      "name": "Slime Bed"
+    },
+    {
+      "url": "/assets-v2/Background Props/Rifle.png",
+      "weight": 100,
+      "name": "Rifle"
+    },
+    {
+      "url": "/assets-v2/Background Props/Disco Ball.png",
+      "weight": 100,
+      "name": "Disco Ball"
+    },
+    {
+      "url": "/assets-v2/Background Props/Ass Farming Stuff.png",
+      "weight": 50,
+      "name": "Ass Farming Stuff"
+    },
+    {
+      "url": "/assets-v2/Background Props/Cantillions.png",
+      "weight": 10,
+      "name": "Cantillions"
+    },
+    {
+      "url": "/assets-v2/Background Props/Watergun.png",
+      "weight": 100,
+      "name": "Watergun"
+    },
+    {
+      "url": "/assets-v2/Background Props/Boogies Gun.png",
+      "weight": 50,
+      "name": "Boogies Gun"
+    },
+    {
+      "url": "/assets-v2/Background Props/Oxmad Sign.png",
+      "weight": 100,
+      "name": "Oxmad Sign"
+    },
+    {
+      "url": "/assets-v2/Background Props/LA Tile Art.png",
+      "weight": 10,
+      "name": "LA Tile Art"
+    },
+    {
+      "url": "/assets-v2/Background Props/Bananadox Fruit.png",
+      "weight": 50,
+      "name": "Bananadox Fruit"
+    },
+    {
+      "url": "/assets-v2/Background Props/Chud Light.png",
+      "weight": 50,
+      "name": "Chud Light"
+    },
+    {
+      "url": "/assets-v2/Background Props/Avalanche of Colored Pens.png",
+      "weight": 50,
+      "name": "Avalanche of Colored Pens"
+    },
+    {
+      "url": "/assets-v2/Background Props/We Like Jokes Sign.png",
+      "weight": 50,
+      "name": "We Like Jokes Sign"
+    },
+    {
+      "url": "/assets-v2/Background Props/Bra.png",
+      "weight": 100,
+      "name": "Bra"
+    },
+    {
+      "url": "/assets-v2/Background Props/Avalanche Of Cables.png",
+      "weight": 100,
+      "name": "Avalanche Of Cables"
+    },
+    {
+      "url": "/assets-v2/Background Props/Jerky.png",
+      "weight": 100,
+      "name": "Jerky"
+    },
+    {
+      "url": "/assets-v2/Background Props/Sweeties poster.png",
+      "weight": 10,
+      "name": "Sweeties poster"
+    },
+    {
+      "url": "/assets-v2/Background Props/Dildo.png",
+      "weight": 50,
+      "name": "Dildo"
+    },
+    {
+      "url": "/assets-v2/Background Props/Apostrophos.png",
+      "weight": 50,
+      "name": "Apostrophos"
+    },
+    {
+      "url": "/assets-v2/Background Props/Q Tip.png",
+      "weight": 100,
+      "name": "Q Tip"
+    },
+    {
+      "url": "/assets-v2/Background Props/Whiskey Glass.png",
+      "weight": 100,
+      "name": "Whiskey Glass"
+    },
+    {
+      "url": "/assets-v2/Background Props/Bitcoin Chart.png",
+      "weight": 50,
+      "name": "Bitcoin Chart"
+    },
+    {
+      "url": "/assets-v2/Background Props/Oxmad Missing.png",
+      "weight": 50,
+      "name": "Oxmad Missing"
+    },
+    {
+      "url": "/assets-v2/Background Props/Delete Button.png",
+      "weight": 50,
+      "name": "Delete Button"
+    },
+    {
+      "url": "/assets-v2/Background Props/Saline.png",
+      "weight": 50,
+      "name": "Saline"
+    },
+    {
+      "url": null,
+      "weight": 2000,
+      "name": "None"
+    }
+  ],
+  "Mouth": [
+    {
+      "url": "/assets-v2/Mouth/Karl_s Teeth.png",
+      "weight": 10,
+      "name": "Karl's Teeth"
+    },
+    {
+      "url": "/assets-v2/Mouth/Rick Mouth.png",
+      "weight": 50,
+      "name": "Rick Mouth"
+    },
+    {
+      "url": "/assets-v2/Mouth/Steak.png",
+      "weight": 50,
+      "name": "Steak"
+    },
+    {
+      "url": "/assets-v2/Mouth/Straw.png",
+      "weight": 100,
+      "name": "Straw"
+    },
+    {
+      "url": "/assets-v2/Mouth/Cigar.png",
+      "weight": 100,
+      "name": "Cigar"
+    },
+    {
+      "url": "/assets-v2/Mouth/Joint.png",
+      "weight": 100,
+      "name": "Joint"
+    },
+    {
+      "url": "/assets-v2/Mouth/Mask.png",
+      "weight": 100,
+      "name": "Mask"
+    },
+    {
+      "url": "/assets-v2/Mouth/Triple Masks.png",
+      "weight": 50,
+      "name": "Triple Masks"
+    },
+    {
+      "url": null,
+      "weight": 2000,
+      "name": "None"
+    }
+  ],
+  "Hat": [
+    {
+      "url": "/assets-v2/Hat/Kitten Headphones.png",
+      "weight": 50,
+      "name": "Kitten Headphones"
+    },
+    {
+      "url": "/assets-v2/Hat/Stone Hair.png",
+      "weight": 10,
+      "name": "Stone Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Vito Hat.png",
+      "weight": 100,
+      "name": "Vito Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Shaved Head.png",
+      "weight": 50,
+      "name": "Shaved Head"
+    },
+    {
+      "url": "/assets-v2/Hat/Sean Headphones.png",
+      "weight": 200,
+      "name": "Sean Headphones"
+    },
+    {
+      "url": "/assets-v2/Hat/Safari Hat.png",
+      "weight": 50,
+      "name": "Safari Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Johnny Hair.png",
+      "weight": 50,
+      "name": "Johnny Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Ice Hair.png",
+      "weight": 10,
+      "name": "Ice Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Karl Hair.png",
+      "weight": 50,
+      "name": "Karl Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Rastafarian Hat.png",
+      "weight": 100,
+      "name": "Rastafarian Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Unwoke Hat.png",
+      "weight": 100,
+      "name": "Unwoke Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Civil War Hat.png",
+      "weight": 50,
+      "name": "Civil War Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Burned Hair.png",
+      "weight": 10,
+      "name": "Burned Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/4 Star Hat.png",
+      "weight": 50,
+      "name": "4 Star Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Ass Farmer Hat.png",
+      "weight": 100,
+      "name": "Ass Farmer Hat"
+    },
+    {
+      "url": "/assets-v2/Hat/Sean Hair.png",
+      "weight": 3000,
+      "name": "Sean Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Unwoke Stetson.png",
+      "weight": 50,
+      "name": "Unwoke Stetson"
+    },
+    {
+      "url": "/assets-v2/Hat/Dick Hair.png",
+      "weight": 100,
+      "name": "Dick Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Superkiller Hair.png",
+      "weight": 50,
+      "name": "Superkiller Hair"
+    },
+    {
+      "url": "/assets-v2/Hat/Vito_s Toupee.png",
+      "weight": 50,
+      "name": "Vito's Toupee"
+    },
+    {
+      "url": null,
+      "weight": 50,
+      "name": "None"
+    }
+  ],
+  "Eyes": [
+    {
+      "url": "/assets-v2/Eyes/High Eyes.png",
+      "weight": 100,
+      "name": "High Eyes"
+    },
+    {
+      "url": "/assets-v2/Eyes/Vito Glasses.png",
+      "weight": 100,
+      "name": "Vito Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Rick and Morty Eyes.png",
+      "weight": 100,
+      "name": "Rick and Morty Eyes"
+    },
+    {
+      "url": "/assets-v2/Eyes/Karl Glasses.png",
+      "weight": 100,
+      "name": "Karl Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Rick and Morty Eyes Cut.png",
+      "weight": 100,
+      "name": "Rick and Morty Eyes Cut"
+    },
+    {
+      "url": "/assets-v2/Eyes/Nerf Dart Eye.png",
+      "weight": 50,
+      "name": "Nerf Dart Eye"
+    },
+    {
+      "url": "/assets-v2/Eyes/Coder Glasses.png",
+      "weight": 100,
+      "name": "Coder Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Johnny Glasses.png",
+      "weight": 100,
+      "name": "Johnny Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Data Eyes.png",
+      "weight": 100,
+      "name": "Data Eyes"
+    },
+    {
+      "url": "/assets-v2/Eyes/Bitcoin Lasers.png",
+      "weight": 50,
+      "name": "Bitcoin Lasers"
+    },
+    {
+      "url": "/assets-v2/Eyes/Sunglasses.png",
+      "weight": 100,
+      "name": "Sunglasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/OG Dick Glasses.png",
+      "weight": 50,
+      "name": "OG Dick Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Civil War Glasses.png",
+      "weight": 50,
+      "name": "Civil War Glasses"
+    },
+    {
+      "url": "/assets-v2/Eyes/Kamina Shades.png",
+      "weight": 100,
+      "name": "Kamina Shades"
+    },
+    {
+      "url": null,
+      "weight": 3000,
+      "name": "None"
+    }
+  ],
+  "Shirt": [
+    {
+      "url": "/assets-v2/Shirt/Superkiller Costume.png",
+      "weight": 100,
+      "name": "Superkiller Costume"
+    },
+    {
+      "url": "/assets-v2/Shirt/WATP Shirt.png",
+      "weight": 100,
+      "name": "WATP Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Thriller Coat.png",
+      "weight": 100,
+      "name": "Thriller Coat"
+    },
+    {
+      "url": "/assets-v2/Shirt/Dis Eater Orederin_ Bib.png",
+      "weight": 50,
+      "name": "Dis Eater Orederin_ Bib"
+    },
+    {
+      "url": "/assets-v2/Shirt/Boogie Body.png",
+      "weight": 50,
+      "name": "Boogie Body"
+    },
+    {
+      "url": "/assets-v2/Shirt/Fat Body.png",
+      "weight": 100,
+      "name": "Fat Body"
+    },
+    {
+      "url": "/assets-v2/Shirt/Dilbert Shirt.png",
+      "weight": 50,
+      "name": "Dilbert Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Buff Body.png",
+      "weight": 100,
+      "name": "Buff Body"
+    },
+    {
+      "url": "/assets-v2/Shirt/Black V-neck.png",
+      "weight": 5000,
+      "name": "Black V-neck"
+    },
+    {
+      "url": "/assets-v2/Shirt/Burned V-neck.png",
+      "weight": 100,
+      "name": "Burned V-neck"
+    },
+    {
+      "url": "/assets-v2/Shirt/OG Dick Shirt.png",
+      "weight": 100,
+      "name": "OG Dick Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Farmer Outfit.png",
+      "weight": 100,
+      "name": "Farmer Outfit"
+    },
+    {
+      "url": "/assets-v2/Shirt/Stone V-neck.png",
+      "weight": 100,
+      "name": "Stone V-neck"
+    },
+    {
+      "url": "/assets-v2/Shirt/Tye-die Shirt.png",
+      "weight": 100,
+      "name": "Tye-die Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Coder Suit.png",
+      "weight": 100,
+      "name": "Coder Suit"
+    },
+    {
+      "url": "/assets-v2/Shirt/Track Suit.png",
+      "weight": 100,
+      "name": "Track Suit"
+    },
+    {
+      "url": "/assets-v2/Shirt/Drugs Shirt.png",
+      "weight": 100,
+      "name": "Drugs Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Anti Woke Shirt.png",
+      "weight": 100,
+      "name": "Anti Woke Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Top Gun Jacket.png",
+      "weight": 100,
+      "name": "Top Gun Jacket"
+    },
+    {
+      "url": "/assets-v2/Shirt/Data Uniform.png",
+      "weight": 100,
+      "name": "Data Uniform"
+    },
+    {
+      "url": "/assets-v2/Shirt/12 Rules Of Fashion.png",
+      "weight": 100,
+      "name": "12 Rules Of Fashion"
+    },
+    {
+      "url": "/assets-v2/Shirt/Cuntra Shirt.png",
+      "weight": 100,
+      "name": "Cuntra Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Civil War Uniform.png",
+      "weight": 100,
+      "name": "Civil War Uniform"
+    },
+    {
+      "url": "/assets-v2/Shirt/Icy Shirt.png",
+      "weight": 100,
+      "name": "Icy Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Vito Shirt.png",
+      "weight": 100,
+      "name": "Vito Shirt"
+    },
+    {
+      "url": "/assets-v2/Shirt/Winners Drink Shirt.png",
+      "weight": 100,
+      "name": "Winners Drink Shirt"
+    },
+    {
+      "url": null,
+      "weight": 100,
+      "name": "None"
+    }
+  ],
+  "Extras": [
+    {
+      "url": "/assets-v2/Extras/Boxing Gloves.png",
+      "weight": 100,
+      "name": "Boxing Gloves"
+    },
+    {
+      "url": "/assets-v2/Extras/Glitter Cup.png",
+      "weight": 100,
+      "name": "Glitter Cup"
+    },
+    {
+      "url": "/assets-v2/Extras/Gasp.png",
+      "weight": 100,
+      "name": "Gasp"
+    },
+    {
+      "url": "/assets-v2/Extras/Sonichu Medalion.png",
+      "weight": 10,
+      "name": "Sonichu Medalion"
+    },
+    {
+      "url": "/assets-v2/Extras/Dead Bananadox.png",
+      "weight": 50,
+      "name": "Dead Bananadox"
+    },
+    {
+      "url": "/assets-v2/Extras/Vaxx Needle.png",
+      "weight": 100,
+      "name": "Vaxx Needle"
+    },
+    {
+      "url": "/assets-v2/Extras/Mattie.png",
+      "weight": 100,
+      "name": "Mattie"
+    },
+    {
+      "url": "/assets-v2/Extras/Icicles.png",
+      "weight": 100,
+      "name": "Icicles"
+    },
+    {
+      "url": "/assets-v2/Extras/Mocking Bird.png",
+      "weight": 100,
+      "name": "Mocking Bird"
+    },
+    {
+      "url": "/assets-v2/Extras/Twitch.png",
+      "weight": 100,
+      "name": "Twitch"
+    },
+    {
+      "url": "/assets-v2/Extras/Dr Fail Show.png",
+      "weight": 100,
+      "name": "Dr Fail Show"
+    },
+    {
+      "url": "/assets-v2/Extras/Seans Animal Corner.png",
+      "weight": 100,
+      "name": "Seans Animal Corner"
+    },
+    {
+      "url": "/assets-v2/Extras/Bananadox.png",
+      "weight": 100,
+      "name": "Bananadox"
+    },
+    {
+      "url": "/assets-v2/Extras/Bad Zinger Tomato.png",
+      "weight": 100,
+      "name": "Bad Zinger Tomato"
+    },
+    {
+      "url": "/assets-v2/Extras/Affirmative Nod.png",
+      "weight": 100,
+      "name": "Affirmative Nod"
+    },
+    {
+      "url": null,
+      "weight": 2000,
+      "name": "None"
+    }
+  ]
+}
