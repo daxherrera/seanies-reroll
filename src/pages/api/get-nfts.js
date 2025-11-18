@@ -29,6 +29,7 @@ export default async function handler(req, res) {
         method: 'searchAssets',
         params: {
           ownerAddress: ownerAddress,
+          grouping: ["collection", MCC],
           page: 1,
         },
       }),
