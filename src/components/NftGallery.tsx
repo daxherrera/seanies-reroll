@@ -26,61 +26,85 @@ export const NftGallery = () => {
   const { publicKey, sendTransaction, signMessage } = useWallet();
   const [nfts, setNfts] = useState<Nft[]>([]);
   const [loading, setLoading] = useState<Record<string, boolean>>({});
-  const [isLoadingNFTs, setIsLoadingNFTs] = useState(false); // Added
+  const [isLoadingNFTs, setIsLoadingNFTs] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchNFTs = async () => {
-      if (publicKey) {
-        setIsLoadingNFTs(true); // Start loading
+      if (!publicKey) return;
 
-        const connection = new Connection(process.env.REACT_APP_SOLANA_RPC_HOST);
-        //const metaplex = Metaplex.make(connection).use(walletAdapterIdentity(wallet));
-        const metaplex = Metaplex.make(connection);
+      setIsLoadingNFTs(true);
+      setError(null);
 
-        try {
-          const response = await fetch(
-            `/api/get-nfts?ownerAddress=${publicKey.toBase58()}`
-          );
+      try {
+        const response = await fetch(
+          `/api/get-nfts?ownerAddress=${publicKey.toBase58()}`
+        );
 
-          const nfts = await response.json();
-          console.log(nfts);
-
-          const nftsWithMetadata = await Promise.all(
-            nfts.map(async (nft: Nft) => {
-              if (nft.content.json_uri) {
-                const metadataResponse = await fetch(nft.content.json_uri);
-                if (!metadataResponse.ok) {
-                  throw new Error(
-                    `Failed to fetch metadata from ${nft.content.json_uri}`
-                  );
-                }
-                const metadata = await metadataResponse.json();
-                nft.content.links.image = metadata.image;
-                //console.log(metadata.image);
-
-              }
-              return nft;
-            })
-          );
-
-          setNfts(nftsWithMetadata);
-        } catch (error) {
-          console.error("Failed to fetch NFTs:", error);
-        } finally {
-          setIsLoadingNFTs(false); // Stop loading
+        if (!response.ok) {
+          let errorMessage = `Server error: ${response.status}`;
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorData.details || errorMessage;
+          } catch (e) {
+            // Failed to parse error JSON, use status text
+            errorMessage = response.statusText || errorMessage;
+          }
+          throw new Error(errorMessage);
         }
+
+        const data = await response.json();
+        const nftsArray = Array.isArray(data) ? data : (data.items || data.results || []);
+
+        if (!Array.isArray(nftsArray)) {
+          throw new Error("API returned invalid data format");
+        }
+
+        if (nftsArray.length === 0) {
+          setNfts([]);
+          setError("No Seanies found in this wallet");
+          return;
+        }
+
+        const nftsWithMetadata = await Promise.all(
+          nftsArray.map(async (nft: Nft) => {
+            try {
+              if (nft.content?.json_uri) {
+                const metadataResponse = await fetch(nft.content.json_uri);
+                if (metadataResponse.ok) {
+                  const metadata = await metadataResponse.json();
+                  nft.content.links.image = metadata.image;
+                }
+              }
+            } catch (metaError) {
+              console.warn(`Failed to fetch metadata for ${nft.id}:`, metaError);
+              // Continue with other NFTs even if one fails
+            }
+            return nft;
+          })
+        );
+
+        setNfts(nftsWithMetadata);
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+        console.error("Failed to fetch NFTs:", error);
+        setError(errorMessage);
+        notify({
+          type: "error",
+          message: errorMessage
+        });
+      } finally {
+        setIsLoadingNFTs(false);
       }
     };
+
     fetchNFTs();
   }, [publicKey]);
 
-
   const updateNftName = async (nftAddress: string) => {
     setLoading((prev) => ({ ...prev, [nftAddress]: true }));
-    console.log("Updating NFT:", nftAddress);
 
     try {
-      // Step 1: Fetch transaction and new metadata from backend
       const response = await fetch(`/api/change-nft-name`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -90,6 +114,11 @@ export const NftGallery = () => {
         }),
       });
 
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `Request failed: ${response.statusText}`);
+      }
+
       const data = await response.json();
 
       if (!data.transaction || !data.newMetadata || !data.newUrl) {
@@ -97,27 +126,14 @@ export const NftGallery = () => {
       }
 
       const { transaction: base64Transaction, newMetadata, newUrl } = data;
-
-      console.log("Transaction received from API:", base64Transaction);
-
-      // Step 2: Decode the transaction
       const connection = new Connection(process.env.REACT_APP_SOLANA_RPC_HOST);
       const decodedTransaction = VersionedTransaction.deserialize(
         new Uint8Array(Buffer.from(base64Transaction, "base64"))
       );
 
-      console.log("Decoded transaction:", decodedTransaction);
-
-      // Step 3: Prompt user to sign and send the transaction
       const signature = await sendTransaction(decodedTransaction, connection);
-
-      console.log("Transaction signature:", signature);
-
-      // Step 4: Confirm the transaction on the blockchain
       await connection.confirmTransaction(signature, "confirmed");
-      console.log("Transaction confirmed!");
 
-      // Step 5: Update the NFT in the state with new metadata and image
       setNfts((prevNfts) =>
         prevNfts.map((nft) => {
           if (nft.id === nftAddress) {
@@ -143,48 +159,38 @@ export const NftGallery = () => {
 
       notify({ type: "success", message: "NFT name and metadata updated!" });
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : "Failed to update NFT";
       console.error("Failed to update NFT name:", error);
-      notify({ type: "error", message: "Failed to update NFT. Please try again." });
+      notify({ type: "error", message: errorMessage });
     } finally {
       setLoading((prev) => ({ ...prev, [nftAddress]: false }));
     }
   };
 
-
   const remixNft = async (nftAddress: string) => {
     setLoading((prev) => ({ ...prev, [nftAddress]: true }));
 
-    // Check wallet connection and message signing
     if (!publicKey) {
       notify({ type: "error", message: "Wallet not connected!" });
-      throw new Error("Wallet not connected!");
-    }
-    if (!signMessage) {
-      notify({ type: "error", message: "Wallet does not support message signing!" });
-      throw new Error("Wallet does not support message signing!");
-    }
-
-    // Message to sign
-    const message = `Sign this to remix your Seanie. It doesn't cost anything.`;
-    const encodedMessage = new TextEncoder().encode(message);
-    let signature;
-
-    try {
-      signature = await signMessage(encodedMessage);
-    } catch (signError) {
       setLoading((prev) => ({ ...prev, [nftAddress]: false }));
-      console.error("Message signing failed:", signError);
-      notify({ type: "error", message: "Message signing failed. Please try again." });
       return;
     }
 
+    if (!signMessage) {
+      notify({ type: "error", message: "Wallet does not support message signing!" });
+      setLoading((prev) => ({ ...prev, [nftAddress]: false }));
+      return;
+    }
+
+    const message = `Sign this to remix your Seanie. It doesn't cost anything.`;
+    const encodedMessage = new TextEncoder().encode(message);
+
     try {
-      // Send request to API
+      const signature = await signMessage(encodedMessage);
+
       const response = await fetch(`/api/upgrade-nft`, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nftAddress,
           ownerPublicKey: publicKey.toBase58(),
@@ -193,24 +199,14 @@ export const NftGallery = () => {
         }),
       });
 
-      // Check for a 400 error response
       if (!response.ok) {
-        const errorResponse = await response.json();
-        if (response.status === 400) {
-          notify({ type: "error", message: errorResponse.error || "Bad Request" });
-          console.error("400 Error:", errorResponse.error);
-        } else {
-          notify({ type: "error", message: `Error ${response.status}: ${response.statusText}` });
-        }
-        throw new Error(`API Error: ${response.statusText}`);
+        const errorResponse = await response.json().catch(() => ({ error: response.statusText }));
+        throw new Error(errorResponse.error || `Request failed: ${response.statusText}`);
       }
 
       const ret = await response.json();
       const data = ret.metadata;
 
-      console.log(data);
-
-      // Update the NFT state
       setNfts((prevNfts) =>
         prevNfts.map((nft) => {
           if (nft.id === nftAddress) {
@@ -231,8 +227,9 @@ export const NftGallery = () => {
 
       notify({ type: "success", message: "Your Seanie has been remixed." });
     } catch (error) {
-      console.error("Failed to update NFT:", error);
-      notify({ type: "error", message: "Failed to remix NFT. Please try again later." });
+      const errorMessage = error instanceof Error ? error.message : "Failed to remix NFT";
+      console.error("Failed to remix NFT:", error);
+      notify({ type: "error", message: errorMessage });
     } finally {
       setLoading((prev) => ({ ...prev, [nftAddress]: false }));
     }
@@ -242,7 +239,8 @@ export const NftGallery = () => {
     <div>
       {!publicKey && <p>Connect wallet to see your Seanies</p>}
       {isLoadingNFTs && <p>Loading Seanies...</p>}
-      {publicKey && !isLoadingNFTs && (
+      {error && !isLoadingNFTs && <p className="error-message">{error}</p>}
+      {publicKey && !isLoadingNFTs && !error && (
         <div>
           <div className="nft-grid">
             {nfts.map((nft, index) => (
