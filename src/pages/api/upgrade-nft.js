@@ -7,8 +7,13 @@ import { toWeb3JsTransaction } from '@metaplex-foundation/umi-web3js-adapters'
 import allAttributes from '../../utils/attributes.json';
 import fetch from 'node-fetch';
 import sharp from 'sharp';
-import { getIrys } from './utils';
 import * as ed25519 from '@noble/ed25519';
+import { sha512 } from '@noble/hashes/sha512';
+import nacl from 'tweetnacl';
+import { getIrys } from './utils';
+
+// Set the hash function for ed25519 using the correct method
+ed25519.etc.sha512Sync = (...m) => sha512(ed25519.etc.concatBytes(...m));
 
 import * as Client from '@web3-storage/w3up-client'
 import { StoreMemory } from '@web3-storage/w3up-client/stores/memory'
@@ -135,7 +140,6 @@ async function getLastModifiedTimestamp(irysId) {
         body: JSON.stringify({ query }),
     });
 
-
     const data = await response.json();
     const edges = data?.data?.transactions?.edges;
 
@@ -149,6 +153,13 @@ async function getLastModifiedTimestamp(irysId) {
     return timestamp;
 }
 
+// Real Irys upload function
+async function uploadToIrys(data, tags) {
+    const irys = await getIrys();
+    const receipt = await irys.upload(data, { tags });
+    return { id: receipt.id };
+}
+
 export default async function handler(req, res) {
     const { message, signature, nftAddress, ownerPublicKey } = req.body;
     console.log('test', req.body);
@@ -160,7 +171,15 @@ export default async function handler(req, res) {
     const encodedMessage = new TextEncoder().encode(message);
     const decodedSignature = bs58.decode(signature);
 
-    const isValid = await ed25519.verify(decodedSignature, encodedMessage, pubKey.toBytes());
+    const publicKeyBytes = typeof pubKey.toBytes === 'function'
+        ? pubKey.toBytes()
+        : new Uint8Array(pubKey.toBuffer());
+
+    const isValid = nacl.sign.detached.verify(
+        encodedMessage,
+        decodedSignature,
+        publicKeyBytes
+    );
 
     if (!isValid) {
         return res.status(400).json({ error: "Signature doesn't match" });
@@ -178,8 +197,6 @@ export default async function handler(req, res) {
     const mint = new PublicKey(nftAddress);
     const payer = new PublicKey(ownerPublicKey);
 
-    const irys = await getIrys();
-    console.log(`wallet address = ${irys.address}`);
     const initialMetadata = await fetchMetadataFromSeeds(umi, { mint: mint })
     console.log("onchain meta", initialMetadata)
 
@@ -207,7 +224,7 @@ export default async function handler(req, res) {
 
     const response = await fetch(initialMetadata.uri);
     if (!response.ok) {
-        throw new Error(`Failed to fetch data from ${url}: ${response.statusText}`);
+        throw new Error(`Failed to fetch data from ${initialMetadata.uri}: ${response.statusText}`);
     }
     const data = await response.json(); // Assuming the data is text. Use response.buffer() for binary data.
     console.log("offchain meta", data)
@@ -220,19 +237,15 @@ export default async function handler(req, res) {
     console.log("new offchain meta", data)
 
     const tags = [{ name: "Root-TX", value: irysId }, { name: "Content-Type", value: "application/json" }];
-    //const tags = [{ name: 'Root-TX', value: irysId }];
     console.log(tags)
-    const receiptOne = await irys.upload(JSON.stringify(data), { tags: tags });
+    const receiptOne = await uploadToIrys(JSON.stringify(data), tags);
     console.log("uploading new metadata")
     console.log(`TX 1 uploaded https://gateway.irys.xyz/mutable/${receiptOne.id}`);
     const newUrl = `https://gateway.irys.xyz/mutable/${receiptOne.id}`
     console.log("New URL:", newUrl)
 
-    try {
-
-        res.status(200).json({ metadata: data });
-    } catch (error) {
-        console.error('Failed to update NFT name:', error);
-        res.status(500).json({ error: 'Failed to update NFT name' });
-    }
+    res.status(200).json({
+        metadata: data,
+        newUrl: newUrl
+    });
 }
